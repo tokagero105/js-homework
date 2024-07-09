@@ -1,28 +1,21 @@
-function encrypt(pass) {
+function crypto(pass) {
     const array = pass.split('')
     const counter = Math.floor(array.length / 2)
-    const arrayPart = array.splice(counter)
-    const result = arrayPart.concat(array).join('')
-    return result
-}
-
-function decrypt(pass) {
-    const array = pass.split('')
-    const counter = Math.ceil(array.length / 2)
-    const arrayPart = array.splice(counter)
-    const result = arrayPart.concat(array).join('')
+    const firstPart = array.splice(0, counter).reverse()
+    const secondPart = array.reverse()
+    const result = firstPart.concat(secondPart).join('')
     return result
 }
 
 function checkPass(origPass, hashedPass) {
-    if (origPass === decrypt(hashedPass)) {
+    if (origPass === crypto(hashedPass)) {
         return true
     }
     return false 
 }
 
 let pass1 = 'text1'
-let hashedPass1 = encrypt(pass1)
+let hashedPass1 = crypto(pass1)
 console.log(checkPass(pass1, hashedPass1))
 
 let pass2 = 'TextText'
