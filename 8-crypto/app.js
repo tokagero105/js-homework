@@ -1,5 +1,9 @@
 function crypto(pass) {
     const array = pass.split('')
+    if (splitedArray.length < 8) {
+        return false;
+    }
+    
     const counter = Math.floor(array.length / 2)
     const firstPart = array.splice(0, counter).reverse()
     const secondPart = array.reverse()

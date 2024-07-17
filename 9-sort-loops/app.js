@@ -8,9 +8,7 @@ function sort(array, sortOrder = true) {
     while (iteration_length != 0) {
         for (let i = 1; i < iteration_length; i++) {
             if ((newArray[i] < newArray[i - 1]) == sortOrder) {
-                let temp = newArray[i - 1]
-                newArray[i - 1] = newArray[i]
-                newArray[i] = temp
+                [newArray[i], newArray[i - 1]] = [newArray[i - 1], newArray[i]]
             }
         }
 
